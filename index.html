@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">click</button>
+    <script>
+        const btn = document.querySelector('#btn')
+        let data = {
+            profile: 'binay',
+            lastMove: '9'
+        }
+        btn.addEventListener('click', async () => {
+            const show = await fetch('/clicked', {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            const print = await show.json()
+
+            console.log(print)
+        })
+
+    </script>
+</body>
+
+</html>
