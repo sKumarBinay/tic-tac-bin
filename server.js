@@ -8,10 +8,10 @@ const bodyParser = require('body-parser')
 app.use(bodyParser.json())
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/index.html')))
 app.post('/clicked', (req, res) => {
-    const dir = './user-profiles.js'
-
+    const dir = './appData.txt'
+    
     if (!fs.existsSync(dir)) {
-        fs.mkdirSync(dir)
+      fs.writeFileSync(`${dir}`, req.profile, 'utf-8')
       }
       const returning = JSON.stringify(req.body)
       res.send(returning)

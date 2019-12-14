@@ -34,7 +34,7 @@
                 body: JSON.stringify(data)
             })
             const print = await show.json()
-
+            document.querySelector('#welcome-message').innerText = print.profile
             console.log(print)
         })
 
