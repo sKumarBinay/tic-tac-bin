@@ -9,11 +9,19 @@
 </head>
 
 <body>
-    <button id="btn">click</button>
+    <input name="playerName" placeholder="Enter your name" id="my-name">
+    <button id="btn">Enter</button>
+    <h3 id="welcome-message"></h3>
+
     <script>
         const btn = document.querySelector('#btn')
+        const playerInput = document.querySelector('#my-name')
+        playerInput.addEventListener('change', () => {
+            player = playerInput.value || 'player'
+        })
+        document.querySelector('#welcome-message').innerText = player
         let data = {
-            profile: 'binay',
+            profile: `${player}`,
             lastMove: '9'
         }
         btn.addEventListener('click', async () => {
