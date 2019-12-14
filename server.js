@@ -11,6 +11,7 @@ app.post('/clicked', (req, res) => {
     const dir = './appData.txt'
     
     if (!fs.existsSync(dir)) {
+      console.log(req.profile)
       fs.writeFileSync(`${dir}`, req.profile, 'utf-8')
       }
       const returning = JSON.stringify(req.body)
