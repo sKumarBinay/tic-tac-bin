@@ -16,14 +16,17 @@
     <script>
         const btn = document.querySelector('#btn')
         const playerInput = document.querySelector('#my-name')
+        let player = 'player'
+        let data
         playerInput.addEventListener('change', () => {
-            player = playerInput.value || 'player'
-        })
-        document.querySelector('#welcome-message').innerText = player
-        let data = {
+            player = playerInput.value
+             data = {
             profile: `${player}`,
             lastMove: '9'
         }
+        })
+        
+
         btn.addEventListener('click', async () => {
             const show = await fetch('/clicked', {
                 method: 'POST',
@@ -34,7 +37,7 @@
                 body: JSON.stringify(data)
             })
             const print = await show.json()
-            document.querySelector('#welcome-message').innerText = print.profile
+            document.querySelector('#welcome-message').innerText = `welcome ${print.profile}`
             console.log(print)
         })
 

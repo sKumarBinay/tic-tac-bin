@@ -8,12 +8,12 @@ const bodyParser = require('body-parser')
 app.use(bodyParser.json())
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/index.html')))
 app.post('/clicked', (req, res) => {
-    const dir = './appData.txt'
+    const dir = './appData.js'
     
-    if (!fs.existsSync(dir)) {
-      console.log(req.profile)
-      fs.writeFileSync(`${dir}`, req.profile, 'utf-8')
-      }
+    
+      console.log(req.body.profile)
+      fs.appendFileSync(`${dir}`, ',' + req.body.profile + req.body.lastMove, 'utf-8')
+      
       const returning = JSON.stringify(req.body)
       res.send(returning)
 })
