@@ -12,7 +12,7 @@ app.post('/clicked', (req, res) => {
     
     
       console.log(req.body.profile)
-      fs.appendFileSync(`${dir}`, ',' + req.body.profile + req.body.lastMove, 'utf-8')
+      fs.appendFileSync(`${dir}`, ',' + JSON.stringify(req.body), 'utf-8')
       
       const returning = JSON.stringify(req.body)
       res.send(returning)
